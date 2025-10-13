@@ -4,7 +4,6 @@
 $(document).ready(function () {
 
 if (typeof list === "undefined" || typeof lessonID === "undefined") {
-    console.warn("⚠️ Không tìm thấy list hoặc lessonID — bỏ qua khởi động EPS-TOPIK");
     return; 
   }
 /**********************************************
@@ -604,4 +603,5 @@ async function handleMenuClick(key) {
   });
   // 🚀 Khi load trang: hiển thị "Danh sách"
   handleMenuClick("danh-sach");
+
 });
