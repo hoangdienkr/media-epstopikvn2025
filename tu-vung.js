@@ -70,9 +70,7 @@ var EPSQuiz = (function() {
 					questionKey === "korean" ?
 					"korean" :
 					"question";
-				questionHTML = `
-
--          <div class="cau-hoi mb-3">
+				questionHTML = ` <div class="cau-hoi mb-3">
             <span class="${qClass}">${item[questionKey]}</span>
           </div>`;
 			}
@@ -606,4 +604,5 @@ async function handleMenuClick(key) {
   });
   // 🚀 Khi load trang: hiển thị "Danh sách"
   handleMenuClick("danh-sach");
+
 });
