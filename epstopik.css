@@ -1,0 +1,140 @@
+  h3.mb-0.post-title {
+    display: none;
+}
+.eps-topik-online {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0; 
+    border-bottom: 2px dashed #4f5356;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    max-width: 800px;
+    margin:0 auto;
+}
+.eps-topik-online:hover,
+.eps-topik-active {
+    background-color: #f0f8ff;
+    border-bottom: 2px solid #3681e0;
+     color:#3681e0;
+}
+.eps-topik-online:hover i,
+.eps-topik-online:hover span,
+.eps-topik-active i,
+.eps-topik-active span {
+    color: #3681e0;
+}
+.eps-topik-online i,
+.eps-topik-online span {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+.eps-topik-online span { font-weight: bold; }
+.eps-topik-online i { margin-left: auto; }
+.eps-topik-online .eps-topik-hien-thi {
+    margin: 0;
+    padding: 0px 5px;
+}
+/* Reset fieldset và legend về mặc định */
+fieldset, legend {
+  all: unset; /* loại bỏ hầu hết style kế thừa */
+  display: revert; /* hiển thị lại kiểu mặc định của trình duyệt */
+  border: revert;
+  margin: revert;
+  padding: revert;
+  font: revert;
+}
+
+/* Nếu chỉ muốn reset riêng fieldset và legend nhưng giữ hiển thị block/inline */
+fieldset {
+  border: 1px solid #ccc;
+  padding: 0.35em 0.75em 0.625em;
+  margin: 0 2px;
+}
+
+legend {
+  display: table; /* mặc định của hầu hết trình duyệt */
+  width: auto;
+  padding: 0;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  color: inherit;
+}
+.van-hoa-content {
+  overflow: hidden; /* chứa float */
+  margin-bottom: 1rem;
+}
+
+.img-vanhoa {
+  float: left;
+  max-width: 500px;
+  height: auto;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem; /* khoảng cách text khi xuống dưới */
+}
+
+.van-hoa-text {
+  /* không cần gì thêm, text sẽ flow quanh ảnh */
+}
+
+/* Mobile: ảnh trên, text dưới */
+@media (max-width: 768px) {
+  .img-vanhoa {
+    float: none;
+    display: block;
+    margin: 0 auto 0.5rem auto; /* căn giữa ảnh */
+    max-width: 100%;
+  }
+}
+
+/* 🎨 Nút màu chủ đạo xanh #3681e0 */
+.btn-custom-pr {
+  background: linear-gradient(270deg, #3681e0, #4caafd);
+  box-shadow: 0 3px #2d6fc0;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px 24px !important;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+}
+
+.btn-custom-pr:hover,
+.btn-custom-pr:focus,
+.btn-custom-pr:active {
+  background: linear-gradient(270deg, #2d6fc0, #3b98ef) !important;
+}
+
+/* 🔹 Dạng full-width mỗi hàng (dùng thêm class này khi cần) */
+.btn-full-row {
+  display: flex !important;
+  width: 100% !important;
+  margin: 12px 0 !important;
+  height: 60px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 3px #2d6fc0;
+  transition: all 0.25s ease;
+}
+.text-bg-hoithoai {
+    color: #fff !important;
+    background-color: rgb(123 102 174) !important;
+}
+  .text-bg-nguphap {
+    color: #fff !important;
+    background-color: rgb(234 130 17) !important;
+}
+  .text-bg-tuvung {
+    color: #fff !important;
+    background-color: rgb(49 111 183) !important;
+}
+  .text-bg-vanhoa {
+    color: #fff !important;
+    background-color: rgb(90 191 184) !important;
+}
