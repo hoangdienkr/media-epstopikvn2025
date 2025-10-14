@@ -129,49 +129,44 @@ var EPSQuiz = (function() {
   }
 
   function checkAnswer(btn, correct) {
-    const questionDiv = btn.closest(".quiz-question");
-    const options = questionDiv.querySelectorAll(".options span");
-    if (questionDiv.classList.contains("answered")) return;
-    questionDiv.classList.add("answered");
+  const questionDiv = btn.closest(".quiz-question");
+  const options = questionDiv.querySelectorAll(".options span");
+  if (questionDiv.classList.contains("answered")) return;
+  questionDiv.classList.add("answered");
 
-    options.forEach(opt => {
-      opt.style.pointerEvents = "none"; 
-      opt.classList.add("disabled");
+  options.forEach(opt => {
+    opt.style.pointerEvents = "none"; 
+    opt.classList.add("disabled");
 
-      if (opt.textContent === correct) {
-        opt.classList.add("correct"); 
-      }
-    });
-
-    if (btn.textContent === correct) {
-      btn.classList.add("correct");
-      quizScore++;
-    } else {
-      btn.classList.add("wrong");
+    // ✅ So sánh đã loại bỏ khoảng trắng thừa
+    if (opt.textContent.trim() === correct.trim()) {
+      opt.classList.add("correct"); 
     }
-    setTimeout(() => {
-      questionDiv.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }, 200);
+  });
 
-    const answeredCount = container.querySelectorAll(".quiz-question.answered").length;
-    if (answeredCount === quizTotal) {
-      const resultDiv = document.getElementById("quizResult");
-      resultDiv.className = "alert alert-info text-center mt-3";
-      resultDiv.innerHTML = `<i class="far fa-map-marker-question"></i> Bạn đã đúng ${quizScore} / ${quizTotal} câu!`;
-
-      EPSQuiz.resetBtn.style.display = "inline-block";
-
-      setTimeout(() => {
-        resultDiv.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }, 500);
-    }
+  if (btn.textContent.trim() === correct.trim()) {
+    btn.classList.add("correct");
+    quizScore++;
+  } else {
+    btn.classList.add("wrong");
   }
+
+  setTimeout(() => {
+    questionDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 200);
+
+  const answeredCount = container.querySelectorAll(".quiz-question.answered").length;
+  if (answeredCount === quizTotal) {
+    const resultDiv = document.getElementById("quizResult");
+    resultDiv.className = "alert alert-info text-center mt-3";
+    resultDiv.innerHTML = `<i class="far fa-map-marker-question"></i> Bạn đã đúng ${quizScore} / ${quizTotal} câu!`;
+    EPSQuiz.resetBtn.style.display = "inline-block";
+
+    setTimeout(() => {
+      resultDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 500);
+  }
+}
   const style = document.createElement("style");
   style.textContent = `
     .quiz-question,#quizResult{margin:10px auto;max-width:800px;}
@@ -605,3 +600,4 @@ async function handleMenuClick(key) {
   handleMenuClick("danh-sach");
 
 });
+
