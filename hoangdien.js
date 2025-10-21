@@ -236,12 +236,19 @@
         success: (res) => {
             console.log("Kết quả server trả về:", res);
 
-            // ✅ Token sai từ server
-            if (!res.success) {
-                localStorage.removeItem("session");
-                showLoginRequired("⚠️ Token không hợp lệ hoặc đã hết hạn. Vui lòng đăng nhập lại!");
-                return;
-            }
+           // ✅ Kiểm tra lỗi từ server đúng cách
+             if (!res.success) {
+                 // Nếu server trả lỗi do token sai
+                 if (res.error === "INVALID_TOKEN" || res.error === "TOKEN_EXPIRED") {
+                     localStorage.removeItem("session");
+                     showLoginRequired("⚠️ Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại!");
+                     return;
+                 }
+             
+                 // ✅ Còn những lỗi khác -> chỉ báo lỗi, KHÔNG logout
+                 container.innerHTML = `⚠️ Lỗi: ${res.message || "Không có dữ liệu từ server!"}`;
+                 return;
+             }
 
             if (!res.data) {
                 container.innerHTML = `
